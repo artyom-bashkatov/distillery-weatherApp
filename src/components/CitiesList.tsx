@@ -5,24 +5,34 @@ import {useHistory} from "react-router-dom";
 import {setCity} from "../store/weatherReducer/weatherReducer";
 import CityPageButtonLink from "./CityPageButtonLink";
 
-const CitiesList = (props) => {
+type CitiesListType = {
+    cities: {
+        city: string,
+        temp_f: string,
+        temp_c: string,
+    }[],
+    tempScale: string,
+    updateCityInStore: (city: string) => void
+}
+
+const CitiesList:React.FC<CitiesListType> = ({ cities, tempScale, updateCityInStore}: CitiesListType) => {
     const router = useHistory();
-    if (props.cities.length > 0) {
+    if (cities.length > 0) {
         return (
             <div className='flex cities-list'>
                 <div className='blue-line'></div>
                 <div className='cities'>
-                    {props.cities.map((obj) => (
+                    {cities.map((obj) => (
                         <CityPageButtonLink
                             onClick={() => {
                                 router.push(`/SimpleWeather/cities/${obj.city}`);
-                                props.updateCityInStore(obj.city);
+                                updateCityInStore(obj.city);
                             }}
                             className='cities__btn'
                             key={obj.city}
                         >
                             <div>{obj.city}</div>
-                            <div>{props.tempScale === "celsius" ? obj.temp_c : obj.temp_f}°</div>
+                            <div>{tempScale === "celsius" ? obj.temp_c : obj.temp_f}°</div>
                         </CityPageButtonLink>
                     ))}
                 </div>
@@ -42,13 +52,13 @@ const CitiesList = (props) => {
     }
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { cities: { arrOfCities: any; }; weatherData: { tempScale: any; }; }) => ({
     cities: state.cities.arrOfCities,
     tempScale: state.weatherData.tempScale,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    updateCityInStore: (city) => {
+const mapDispatchToProps = (dispatch: (arg0: { type: string; payload: string | null; }) => void) => ({
+    updateCityInStore: (city: string | null) => {
         dispatch(setCity(city));
     }
 });

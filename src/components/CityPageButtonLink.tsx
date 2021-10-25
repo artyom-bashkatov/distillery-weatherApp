@@ -1,7 +1,11 @@
 import React from 'react';
 import MyButton from "./UI/MyButton";
 
-const CityPageButtonLink = ({children, ...props}) => {
+type Props = {
+    [key: string]: any;
+};
+
+const CityPageButtonLink:React.FC<Props> = ({ children, ...props }) => {
     return (
         <MyButton {...props} sx={{
             padding: '0 21px',

@@ -6,11 +6,17 @@ import '../styles/CurrentForecast.css';
 import WeatherTempScale from "./WeatherTempScale";
 import WeatherCondition from "./WeatherCondition";
 
-const CurrentForecast = (props) => {
+type CurrentForecastType = {
+    wind: number,
+    pressure: number,
+    humidity: number
+}
+
+const CurrentForecast:React.FC<CurrentForecastType> = ({ wind, pressure, humidity }: CurrentForecastType) => {
     // Conversion from kph to m/s
-    const windToMPS = (props.wind * 1000 / 3600).toFixed(1);
+    const windToMPS: string = (wind * 1000 / 3600).toFixed(1);
     // Conversion from millibars to millimeters of mercury according to the formula
-    const pressureToMmOfMercury = (props.pressure * 0.750063755419211).toFixed();
+    const pressureToMmOfMercury: string = (pressure * 0.750063755419211).toFixed();
 
     return (
         <div>
@@ -24,14 +30,14 @@ const CurrentForecast = (props) => {
                     <div className='properties__value'>{windToMPS}<span>m/s</span></div>
 
                     <div className='properties__value'>{pressureToMmOfMercury}<span>mm Hg</span></div>
-                    <div className='properties__value'>{props.humidity}<span>%</span></div>
+                    <div className='properties__value'>{humidity}<span>%</span></div>
                 </div>
             </div>
         </div>
     );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { weatherData: { location: any; responseLocation: any; wind: any; pressure: any; humidity: any; }; }) => ({
     location: state.weatherData.location,
     responseLocation: state.weatherData.responseLocation,
     wind: state.weatherData.wind,

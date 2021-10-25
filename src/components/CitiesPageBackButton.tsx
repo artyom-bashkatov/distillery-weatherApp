@@ -2,7 +2,7 @@ import React from "react";
 import IconBackButton from "./UI/IconBackButton";
 import {Link} from "react-router-dom";
 
-const CitiesPageBackButton = () => {
+const CitiesPageBackButton:React.FC = () => {
     return (
         <Link to='/SimpleWeather' className='cities-page__back-btn'>
             <IconBackButton
