@@ -6,18 +6,23 @@ import {fetchWeather, setCity} from "../store/weatherReducer/weatherReducer";
 import store from "../store/store";
 import useDebounce from "../helpers/useDebounce";
 
-const CitySearch = (props) => {
+type CitySearchPropsType = {
+    location: string,
+    onChange: (e:React.ChangeEvent<HTMLInputElement>) => void
+}
+
+const CitySearch:React.FC<CitySearchPropsType> = ({ location, onChange }: CitySearchPropsType) => {
     useEffect(() => {
-        if (localStorage.getItem('location') && props.location === '') {
+        if (localStorage.getItem('location') && location === '') {
             store.dispatch(setCity(localStorage.getItem('location')));
         }
 
         return () => {
-            localStorage.setItem('location', props.location);
+            localStorage.setItem('location', location);
         };
-    }, [props.location])
+    }, [location])
 
-    const debouncedLocation = useDebounce(props.location.trim(), 700);
+    const debouncedLocation = useDebounce(location.trim(), 700);
     const weather = fetchWeather(debouncedLocation);
 
     const memoLoadWeather = useCallback(weather, [weather]);
@@ -35,20 +40,20 @@ const CitySearch = (props) => {
                 type='text'
                 minWidth='70'
                 inputStyle={{fontSize: 35, fontWeight: 600, display: 'block'}}
-                value={props.location}
-                onChange={(e) => props.onChange(e)}
+                value={location}
+                onChange={(e) => onChange(e)}
             />
         </div>
     );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { weatherData: { location: string; favoriteCities: string; }; }) => ({
     location: state.weatherData.location,
     favoriteCities: state.weatherData.favoriteCities
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    onChange: (event) => {
+const mapDispatchToProps = (dispatch: (arg0: { type: string; payload: string | null; }) => void) => ({
+    onChange: (event: { target: { value: string | null; }; }) => {
         dispatch(setCity(event.target.value));
     }
 });

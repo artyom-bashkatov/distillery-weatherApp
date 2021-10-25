@@ -7,8 +7,13 @@ import {connect} from "react-redux";
 import ForecastPageButtonLink from "../components/ForecastPageButtonLink";
 import CurrentForecast from "../components/CurrentForecast";
 
-const WeatherToday = (props) => {
-    if (props.responseLocation && props.location === props.responseLocation.toLowerCase()) {
+type WeatherTodayProps = {
+    responseLocation: string,
+    location: string,
+}
+
+const WeatherToday: React.FC<WeatherTodayProps> = ({ responseLocation, location}) => {
+    if (responseLocation && location === responseLocation.toLowerCase()) {
         return (
             <div>
                 <div className='app'>
@@ -39,7 +44,7 @@ const WeatherToday = (props) => {
     }
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { weatherData: { location: string; responseLocation: string; }; }) => ({
     location: state.weatherData.location,
     responseLocation: state.weatherData.responseLocation,
 })
