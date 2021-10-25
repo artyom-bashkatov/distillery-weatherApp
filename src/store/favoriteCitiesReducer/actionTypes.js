@@ -1,0 +1,4 @@
+export const ADD_TO_FAVORITES = "ADD_TO_FAVORITES";
+export const REMOVE_FROM_FAVORITES = "REMOVE_FROM_FAVORITES";
+export const GET_CITIES = "GET_CITIES";
+export const UPDATE_TEMP = "UPDATE_TEMP";

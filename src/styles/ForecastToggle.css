@@ -1,0 +1,8 @@
+.forecast-toggle-wrapper {
+    width: 250px;
+    margin: 0 auto;
+}
+.forecast-toggle {
+    display: flex;
+    justify-content: center;
+}

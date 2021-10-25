@@ -1,0 +1,26 @@
+.cities-page {
+    display: flex;
+    gap: 25px;
+}
+
+.cities-page__list {
+    width: 341px;
+    text-align: center;
+}
+
+.cities-page-header {
+    font-size: 23px;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.cities-page__settings {
+    margin: 55px auto 0;
+    width: 100%;
+}
+
+.cities-page__back-btn {
+    position: absolute;
+    top: 17px;
+    left: 35px;
+}

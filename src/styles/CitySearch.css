@@ -1,0 +1,29 @@
+.search {
+    position: relative;
+}
+
+.search h1 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.search input {
+    display: inline-block;
+    max-width: 560px;
+    height: 40px;
+    padding: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 30px;
+    font-family: inherit;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+}
+
+.search input:focus,
+.search input:hover {
+    outline: none !important;
+}

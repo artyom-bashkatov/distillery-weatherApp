@@ -1,0 +1,129 @@
+@media (max-width: 830px) {
+    .app {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 440px) {
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-width: 414px;
+        margin-bottom: 80px;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .app {
+        width: 294px;
+        height: 520px;
+        margin-top: 80px;
+        padding-top: 60px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .weather {
+        grid-template-areas:
+      "icon             temp"
+      "properties properties";
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 0;
+    }
+
+    .search h1 {
+        font-size: 20px;
+    }
+
+    .weather__icon {
+        justify-self: center;
+        max-height: 110px;
+    }
+
+    .celsius {
+        font-size: 90px;
+    }
+
+    .fahrenheit {
+        font-size: 80px;
+    }
+
+    .weather__properties {
+        flex-direction: row;
+        gap: 30px;
+        justify-self: center;
+        margin-top: 20px;
+    }
+
+    .properties__value {
+        font-size: 24px;
+    }
+
+    .properties__value span {
+        font-size: 15px;
+    }
+
+    .search input {
+        max-width: 270px;
+        font-size: 25px !important;
+    }
+
+    .condition {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 413px) {
+    body {
+        min-width: 320px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .app {
+        width: 260px;
+        height: 450px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .search h1 {
+        font-size: 15px;
+    }
+
+    .condition {
+        font-size: 15px;
+    }
+
+    .search input {
+        max-width: 235px;
+        font-size: 20px !important;
+    }
+
+    .weather__icon {
+        max-height: 90px;
+    }
+
+    .celsius {
+        font-size: 60px;
+    }
+
+    .fahrenheit {
+        font-size: 50px;
+    }
+
+    .weather__properties {
+        gap: 15px;
+    }
+
+    .properties__value {
+        font-size: 15px;
+    }
+
+    .properties__value span {
+        font-size: 10px;
+    }
+}

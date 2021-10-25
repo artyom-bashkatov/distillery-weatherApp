@@ -1,0 +1,57 @@
+.weather {
+    grid-template-areas: "icon temp properties";
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    margin-top: 28px;
+    text-align: center;
+    column-gap: 40px;
+}
+
+.weather__temp {
+    grid-area: temp;
+    justify-self: center;
+}
+
+.weather__temp-scale {
+    margin: 0;
+    font-family: "Roboto", monospace;
+    line-height: 1em;
+}
+
+.celsius {
+    font-size: 120px;
+    font-weight: 300;
+}
+
+.fahrenheit {
+    font-size: 110px;
+    font-weight: 300;
+}
+
+.weather__icon {
+    grid-area: icon;
+    justify-self: flex-end;
+    max-height: 124px;
+}
+
+.weather__properties {
+    flex-direction: column;
+    grid-area: properties;
+    align-items: flex-start;
+    font-family: "Roboto", sans-serif;
+}
+
+.properties__value {
+    font-size: 27px;
+}
+
+.properties__value span {
+    margin-left: 8px;
+    font-size: 17px;
+}
+
+.condition {
+    margin-top: 10px;
+    font-size: 24px;
+    font-family: "Roboto", sans-serif;
+}
