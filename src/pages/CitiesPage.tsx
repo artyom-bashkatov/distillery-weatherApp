@@ -6,18 +6,23 @@ import TempScaleToggle from "../components/TempScaleToggle";
 import {connect} from "react-redux";
 import {fetchCityTemp} from "../store/favoriteCitiesReducer/favoriteCitiesReducer";
 
-const CitiesPage = (props) => {
+type CitiesPageType = {
+    cities: [],
+    fetchCityTemp: (arg: string) => void
+}
+
+const CitiesPage:React.FC<CitiesPageType> = ({ fetchCityTemp, cities }: CitiesPageType) => {
     const fifteenMinutes = 90000;
     const currentDate = Date.now();
 
     useEffect(() => {
-        props.cities.forEach((obj) => {
+        cities.forEach((obj: { lastUpdated: number; city: any; }) => {
             if(currentDate - obj.lastUpdated > fifteenMinutes) {
-                props.fetchCityTemp(obj.city)
+                fetchCityTemp(obj.city)
             }
-            localStorage.setItem('cities', JSON.stringify(props.cities));
+            localStorage.setItem('cities', JSON.stringify(cities));
         })
-    }, [currentDate, props])
+    }, [cities, currentDate, fetchCityTemp])
 
     return (
         <div className='app app-outlined cities-page'>
@@ -34,12 +39,12 @@ const CitiesPage = (props) => {
     );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { cities: { arrOfCities: any; }; }) => ({
     cities: state.cities.arrOfCities
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    fetchCityTemp: (city) => {
+const mapDispatchToProps = (dispatch: any) => ({
+    fetchCityTemp: (city: { city: string; temp_c: string; temp_f: string; lastUpdated: number; } | string) => {
         dispatch(fetchCityTemp(city));
     }
 })

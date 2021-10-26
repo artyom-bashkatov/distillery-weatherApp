@@ -8,16 +8,24 @@ import {connect} from "react-redux";
 import ForecastPageButtonLink from "../components/ForecastPageButtonLink";
 import CurrentForecast from "../components/CurrentForecast";
 
-const CityPage = (props) => {
-    const params = useParams();
+type paramsType = {
+    city: string
+}
+
+type CityPagePropsType = {
+    location: string
+}
+
+const CityPage:React.FC<CityPagePropsType> = ({ location }: CityPagePropsType) => {
+    const params = useParams<paramsType>();
     const router = useHistory();
 
     // Redirect to the home page if you start looking for another city
     useEffect(() => {
-        if (props.location !== params.city) {
+        if (location !== params.city) {
             router.push('/SimpleWeather');
         }
-    }, [params.city, props.location, router])
+    }, [params.city, location, router])
 
     return (
         <div>
@@ -36,7 +44,7 @@ const CityPage = (props) => {
     );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { weatherData: { location: string; }; }) => ({
     location: state.weatherData.location
 })
 

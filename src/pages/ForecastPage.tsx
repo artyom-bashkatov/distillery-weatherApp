@@ -4,7 +4,7 @@ import ForecastPageBackButton from "../components/ForecastPageBackButton";
 import ForecastDay from "../components/ForecastDay";
 import ForecastToggle from "../components/ForecastToggle";
 
-const ForecastPage = () => {
+const ForecastPage:React.FC = () => {
     return (
         <div className='app app-outlined'>
             <Link to='/SimpleWeather/'>

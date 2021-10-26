@@ -1,17 +1,24 @@
 import store from "../store";
 import {ADD_TO_FAVORITES, GET_CITIES, REMOVE_FROM_FAVORITES, UPDATE_TEMP} from "./actionTypes";
 import fetchData from "../../helpers/fetchData";
+import { FavoritesActionTypes, AddToFavoritesType } from "./types";
 
-export const addCity = (city) => ({type: ADD_TO_FAVORITES, payload: city})
-export const removeCity = (city) => ({type: REMOVE_FROM_FAVORITES, payload: city})
-export const getCitiesFromLocaleStorage = (cities) => ({type: GET_CITIES, payload: cities})
-export const updateTemp = (data) => ({type: UPDATE_TEMP, payload: data})
+export const addCity = (city: AddToFavoritesType) => ({type: ADD_TO_FAVORITES, payload: city})
+export const removeCity = (city: string) => ({type: REMOVE_FROM_FAVORITES, payload: city})
+export const getCitiesFromLocaleStorage = (cities: any) => ({type: GET_CITIES, payload: cities})
+export const updateTemp = (data: any) => ({type: UPDATE_TEMP, payload: data})
 
-export const citiesState = {
+type citiesStateType = {
+    arrOfCities: {
+        city: AddToFavoritesType | string
+    }[]
+}
+
+export const citiesState: citiesStateType = {
     arrOfCities: [],
 };
 
-export function favoriteCitiesReducer(state = citiesState, action) {
+export function favoriteCitiesReducer(state = citiesState, action: FavoritesActionTypes) {
     switch (action.type) {
         case ADD_TO_FAVORITES:
             return {
@@ -49,14 +56,14 @@ export function favoriteCitiesReducer(state = citiesState, action) {
     }
 }
 
-export const addToFavorites = (city) => (dispatch) => {
+export const addToFavorites = (city: { city: string; temp_c: string; temp_f: string; lastUpdated: number; }) => (dispatch: any) => {
     store.dispatch(addCity(city));
 };
-export const removeFromFavorites = (city) => (dispatch) => {
+export const removeFromFavorites = (city: string) => (dispatch: any) => {
     store.dispatch(removeCity(city));
 };
 
-export const fetchCityTemp = (city) => async (dispatch) => {
+export const fetchCityTemp = (city: { city: string; temp_c: string; temp_f: string; lastUpdated: number; } | string) => async (dispatch: any) => {
     try {
         const data = await (fetchData(city));
         store.dispatch(updateTemp(data));
