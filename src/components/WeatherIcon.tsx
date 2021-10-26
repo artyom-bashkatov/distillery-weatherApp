@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import "../styles/CurrentForecast.css";
 
-const WeatherIcon = (props) => {
+const WeatherIcon = (props: { isDay: any; code: any; }) => {
     let timeOfDay = 'day';
     if (!props.isDay) {
         timeOfDay = 'night';
@@ -19,7 +19,7 @@ const WeatherIcon = (props) => {
 
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { weatherData: { code: any; isDay: any; }; }) => ({
     code: state.weatherData.code,
     isDay: state.weatherData.isDay
 })

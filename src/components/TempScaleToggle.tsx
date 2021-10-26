@@ -1,37 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import {ToggleButton, ToggleButtonGroup} from "@mui/material";
-import {changeForecastMod} from "../store/weatherReducer/weatherReducer";
 import {connect} from "react-redux";
-import '../styles/ForecastToggle.css'
+import {changeTempScale} from "../store/weatherReducer/weatherReducer";
 
-const ForecastToggle = (props) => {
-    if (!localStorage.getItem('forecastScale')) {
-        localStorage.setItem('forecastScale', 'threeDay');
+type TempScaleToggleType = {
+    changeTempScale: (arg: string) => void
+}
+
+const TempScaleToggle:React.FC<TempScaleToggleType> = ({ changeTempScale }: TempScaleToggleType) => {
+    if (!localStorage.getItem('tempScale')) {
+        localStorage.setItem('tempScale', 'celsius');
     }
-    const [value, setValue] = useState(localStorage.getItem('forecastScale'));
+    const [value, setValue] = useState(localStorage.getItem('tempScale'));
     return (
-        <div className='forecast-toggle-wrapper'>
             <ToggleButtonGroup
                 color='secondary'
                 value={value}
                 exclusive
-                sx={{height: '20px'}}
                 fullWidth={true}
-                className='forecast-toggle'
+                sx={{height: '20px'}}
                 onChange={() => {
-                    if (value === 'threeDay') {
-                        setValue('hourly')
-                        props.changeForecastMod('hourly');
-                        localStorage.setItem('forecastScale', 'hourly')
+                    if (value === 'celsius') {
+                        setValue('fahrenheit')
+                        changeTempScale('fahrenheit');
+                        localStorage.setItem('tempScale', 'fahrenheit')
                     } else {
-                        setValue('threeDay')
-                        props.changeForecastMod('threeDay')
-                        localStorage.setItem('forecastScale', 'threeDay')
+                        setValue('celsius')
+                        changeTempScale('celsius')
+                        localStorage.setItem('tempScale', 'celsius')
                     }
                 }}
             >
                 <ToggleButton
-                    value='hourly'
+                    value='fahrenheit'
                     sx={{
                         '&.MuiToggleButton-root': {
                             borderRadius: '20px',
@@ -51,10 +52,10 @@ const ForecastToggle = (props) => {
                         },
                     }}
                 >
-                    Hourly
+                    Fahrenheit
                 </ToggleButton>
                 <ToggleButton
-                    value='threeDay'
+                    value='celsius'
                     sx={{
                         '&.MuiToggleButton-root': {
                             borderRadius: '20px',
@@ -74,21 +75,20 @@ const ForecastToggle = (props) => {
                         },
                     }}
                 >
-                    Three-day
+                    Celsius
                 </ToggleButton>
             </ToggleButtonGroup>
-        </div>
     );
 };
 
-const mapStateToProps = (state) => ({
-    forecastMod: state.weatherData.forecastMod,
+const mapStateToProps = (state: { weatherData: { tempScale: any; }; }) => ({
+    tempScale: state.weatherData.tempScale,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    changeForecastMod: (value) => {
-        dispatch(changeForecastMod(value));
+const mapDispatchToProps = (dispatch: (arg0: { type: string; payload: string; }) => void) => ({
+    changeTempScale: (value: string) => {
+        dispatch(changeTempScale(value));
     },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForecastToggle);
+export default connect(mapStateToProps, mapDispatchToProps)(TempScaleToggle);

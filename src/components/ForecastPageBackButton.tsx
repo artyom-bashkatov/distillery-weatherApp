@@ -1,7 +1,7 @@
 import React from 'react';
 import OutlinedButton from "./UI/OutlinedButton";
 
-const ForecastPageBackButton = ({children, ...props}) => {
+const ForecastPageBackButton:React.FC = ({children, ...props}) => {
     return (
         <OutlinedButton {...props} sx={{
             color: '#2d81ff',
