@@ -2,13 +2,17 @@ import React from "react";
 import {Favorite, FavoriteBorder} from "@mui/icons-material";
 import {Checkbox} from "@mui/material";
 
-const FavoriteButton = (props) => {
+type Props = {
+    [key: string]: any;
+};
+
+const FavoriteButton:React.FC<Props> = (props: Props) => {
     return (
         <Checkbox
             {...props}
             icon={<FavoriteBorder/>}
             checkedIcon={<Favorite/>}
-            size='large'
+            size='medium'
             sx={{
                 color: 'white',
                 '&.Mui-checked': {

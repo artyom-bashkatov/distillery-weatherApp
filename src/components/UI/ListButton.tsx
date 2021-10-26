@@ -2,7 +2,7 @@ import React from "react";
 import {IconButton} from "@mui/material";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
-const ListButton = () => {
+const ListButton:React.FC = () => {
     return (
         <IconButton size='large' sx={{color: 'white'}}>
             <FormatListBulletedIcon fontSize='large'/>

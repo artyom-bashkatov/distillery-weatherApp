@@ -1,7 +1,11 @@
 import React from 'react';
 import {Button} from "@mui/material";
 
-const MyButton = ({children, ...props}) => {
+type Props = {
+    [key: string]: any;
+};
+
+const MyButton:React.FC<Props> = ({children, ...props}: Props) => {
     return (
         <Button {...props}>
             {children}

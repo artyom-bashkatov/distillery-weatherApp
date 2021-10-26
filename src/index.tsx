@@ -15,8 +15,10 @@ if (!localStorage.getItem('cities')) {
     localStorage.setItem('cities', '[]');
 } else {
     const citiesStr = localStorage.getItem('cities')
-    const cities = JSON.parse(citiesStr);
-    store.dispatch(getCitiesFromLocaleStorage(cities));
+    if (citiesStr) {
+        const cities = JSON.parse(citiesStr);
+        store.dispatch(getCitiesFromLocaleStorage(cities));
+    }
 }
 
 if (localStorage.getItem('tempScale')) {
@@ -27,11 +29,9 @@ const theme = createTheme({
     palette: {
         primary: {
             main: '#ffffff',
-            darker: '#ffffff'
         },
         secondary: {
             main: '#2d81ff',
-            darker: '#2d81ff'
         }
     }
 });
