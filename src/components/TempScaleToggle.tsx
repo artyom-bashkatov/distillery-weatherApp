@@ -85,7 +85,7 @@ const mapStateToProps = (state: { weatherData: { tempScale: any; }; }) => ({
     tempScale: state.weatherData.tempScale,
 });
 
-const mapDispatchToProps = (dispatch: (arg0: { type: string; payload: string; }) => void) => ({
+const mapDispatchToProps = (dispatch: any) => ({
     changeTempScale: (value: string) => {
         dispatch(changeTempScale(value));
     },

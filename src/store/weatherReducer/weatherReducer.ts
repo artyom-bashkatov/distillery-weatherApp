@@ -14,7 +14,7 @@ export const setWeather = (response: weatherPayloadType) => ({
   type: SET_WEATHER,
   payload: response,
 });
-export const changeTempScale = (response: string) => ({
+export const changeTempScale = (response: string | null) => ({
   type: CHANGE_TEMP_SCALE,
   payload: response,
 });

@@ -7,7 +7,7 @@ import CityPage from "./pages/CityPage";
 import ForecastPage from "./pages/ForecastPage";
 
 
-const App = () => {
+const App:React.FC = () => {
     return (
         <Router history={history}>
             <Switch>
