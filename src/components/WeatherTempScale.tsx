@@ -1,17 +1,24 @@
 import React from 'react';
 import {connect} from "react-redux";
 
-const WeatherTempScale = (props: { tempScale: string; temp_c: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; temp_f: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => {
-    if (props.tempScale === 'celsius') {
+type WeatherTempScaleType = {
+    tempScale: string, 
+    temp_c: string, 
+    temp_f: string,
+    className: string
+}
+
+const WeatherTempScale:React.FC<WeatherTempScaleType> = ({ tempScale, temp_c, temp_f }) => {
+    if (tempScale === 'celsius') {
         return (
             <h1 className='celsius'>
-                {props.temp_c}
+                {temp_c}
             </h1>
         )
     } else {
         return (
             <h1 className='fahrenheit'>
-                {props.temp_f}
+                {temp_f}
             </h1>
         )
     }
