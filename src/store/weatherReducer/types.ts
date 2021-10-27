@@ -38,11 +38,11 @@ export type weatherPayloadType = {
   forecast: {
     forecastday: forecastType[]
   };
-};
+} | object | string | null;
 
 interface ISetCityAction {
   type: typeof SET_CITY;
-  payload: string;
+  payload: string | null;
 }
 
 interface IChangeTempScaleAction {
@@ -55,9 +55,10 @@ interface IChangeForecastAction {
   payload: string;
 }
 
+// need refactor, why type is string just
 interface ISetWeatherAction {
-  type: typeof SET_WEATHER;
-  payload: weatherPayloadType;
+  type: any;
+  payload: weatherPayloadType | any;
 }
 
 export type WeatherActionTypes =

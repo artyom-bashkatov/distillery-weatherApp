@@ -58,7 +58,7 @@ const mapStateToProps = (state: { cities: { arrOfCities: any; }; weatherData: { 
 });
 
 const mapDispatchToProps = (dispatch: (arg0: { type: string; payload: string | null; }) => void) => ({
-    updateCityInStore: (city: string | null) => {
+    updateCityInStore: (city: string) => {
         dispatch(setCity(city));
     }
 });

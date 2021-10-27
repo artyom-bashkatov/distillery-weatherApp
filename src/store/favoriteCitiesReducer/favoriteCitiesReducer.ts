@@ -3,7 +3,7 @@ import {ADD_TO_FAVORITES, GET_CITIES, REMOVE_FROM_FAVORITES, UPDATE_TEMP} from "
 import fetchData from "../../helpers/fetchData";
 import { FavoritesActionTypes, AddToFavoritesType } from "./types";
 
-export const addCity = (city: AddToFavoritesType) => ({type: ADD_TO_FAVORITES, payload: city})
+export const addCity = (city: AddToFavoritesType | null) => ({type: ADD_TO_FAVORITES, payload: city})
 export const removeCity = (city: string) => ({type: REMOVE_FROM_FAVORITES, payload: city})
 export const getCitiesFromLocaleStorage = (cities: any) => ({type: GET_CITIES, payload: cities})
 export const updateTemp = (data: any) => ({type: UPDATE_TEMP, payload: data})
@@ -63,9 +63,9 @@ export const removeFromFavorites = (city: string) => (dispatch: any) => {
     store.dispatch(removeCity(city));
 };
 
-export const fetchCityTemp = (city: { city: string; temp_c: string; temp_f: string; lastUpdated: number; } | string) => async (dispatch: any) => {
+export const fetchCityTemp = (city: any) => async (dispatch: any) => {
     try {
-        const data = await (fetchData(city));
+        const data = await (fetchData(city, 0));
         store.dispatch(updateTemp(data));
     } catch (e) {
         console.error(e);

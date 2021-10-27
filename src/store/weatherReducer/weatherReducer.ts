@@ -76,7 +76,7 @@ export function weatherReducer(
 ) {
   switch (action.type) {
     case SET_CITY:
-      return { ...state, location: action.payload.toLowerCase() };
+      return { ...state, location: action.payload && action.payload.toLowerCase() };
     case SET_WEATHER:
       return {
         ...state,
@@ -91,11 +91,11 @@ export function weatherReducer(
         code: action.payload.current.condition.code,
         isDay: action.payload.current.is_day,
         hourlyForecast: action.payload.forecast.forecastday[0].hour.map(
-          (hour) => {
+          (hour: { temp_c: any; temp_f: any; }) => {
             return { temp_c: hour.temp_c, temp_f: hour.temp_f };
           }
         ),
-        threeDayForecast: action.payload.forecast.forecastday.map((day) => {
+        threeDayForecast: action.payload.forecast.forecastday.map((day: { date_epoch: any; day: { avgtemp_c: any; avgtemp_f: any; }; }) => {
           return {
             date: day.date_epoch,
             temp_c: day.day.avgtemp_c,

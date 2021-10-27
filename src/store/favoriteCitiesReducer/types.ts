@@ -6,7 +6,7 @@ import {
 } from "./actionTypes";
 
 export type AddToFavoritesType = {
-  city: string | { city: string; temp_c: string; temp_f: string; lastUpdated: number; };
+  city: string | object | null | any;
   temp_c: string;
   temp_f: string;
   lastUpdated: number;
@@ -37,9 +37,10 @@ interface IRemoveFromFavorites {
   payload: AddToFavoritesType;
 }
 
+// need refactor, why type is string just
 interface IUpdateTemp {
-  type: typeof UPDATE_TEMP;
-  payload: UpdateTempType;
+  type: any;
+  payload: UpdateTempType | any;
 }
 
 export type FavoritesActionTypes =
