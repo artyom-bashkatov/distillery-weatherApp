@@ -23,6 +23,9 @@ const App:React.FC = () => {
                 <Route exact path='/SimpleWeather/forecast'>
                     <ForecastPage/>
                 </Route>
+                <Route path="/">
+                    <Redirect to='/SimpleWeather'/>
+                </Route>
                 <Redirect to='/SimpleWeather'/>
             </Switch>
         </Router>

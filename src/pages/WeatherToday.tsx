@@ -1,5 +1,5 @@
 import React from "react";
-import CitySearch from "../components/CitySearch";
+import CitySearch from "../components/CitySearch/CitySearch";
 import FavoriteCityButton from "../components/FavoriteCityButton";
 import ListButton from "../components/UI/ListButton";
 import {Link} from "react-router-dom";

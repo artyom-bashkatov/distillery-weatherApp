@@ -52,7 +52,7 @@ type initialStateType = {
   forecastMod: string;
 };
 
-export const initialState:initialStateType = {
+const initialState:initialStateType = {
   location: "",
   responseLocation: "",
   country: "",

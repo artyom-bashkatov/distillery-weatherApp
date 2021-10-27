@@ -1,10 +1,10 @@
 import React, {useCallback, useEffect} from "react";
 import AutosizeInput from "react-input-autosize";
 import {connect} from "react-redux";
-import "../styles/CitySearch.css";
-import {fetchWeather, setCity} from "../store/weatherReducer/weatherReducer";
-import store from "../store/store";
-import useDebounce from "../helpers/useDebounce";
+import "../../styles/CitySearch.css";
+import {fetchWeather, setCity} from "../../store/weatherReducer/weatherReducer";
+import store from "../../store/store";
+import useDebounce from "../../helpers/useDebounce";
 
 type CitySearchPropsType = {
     location: string,
@@ -37,6 +37,7 @@ const CitySearch:React.FC<CitySearchPropsType> = ({ location, onChange }: CitySe
         <div className='search'>
             <h1>Right now in</h1>
             <AutosizeInput
+                data-testid="searchCityInput"
                 type='text'
                 minWidth='70'
                 inputStyle={{fontSize: 35, fontWeight: 600, display: 'block'}}
