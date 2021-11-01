@@ -11,13 +11,13 @@ type WeatherTempScaleType = {
 const WeatherTempScale:React.FC<WeatherTempScaleType> = ({ tempScale, temp_c, temp_f }) => {
     if (tempScale === 'celsius') {
         return (
-            <h1 className='celsius'>
+            <h1 data-testid="tempCelsius" className='celsius'>
                 {temp_c}
             </h1>
         )
     } else {
         return (
-            <h1 className='fahrenheit'>
+            <h1 data-testid="fahrenheit" className='fahrenheit'>
                 {temp_f}
             </h1>
         )

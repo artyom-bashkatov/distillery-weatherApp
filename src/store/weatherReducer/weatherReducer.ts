@@ -8,6 +8,7 @@ import {
 } from "./actionTypes";
 import fetchData from "../../helpers/fetchData";
 import { weatherPayloadType, WeatherActionTypes } from "./types";
+import { weatherData } from "mockup/weatherData";
 
 export const setCity = (city: string | null) => ({ type: SET_CITY, payload: city });
 export const setWeather = (response: weatherPayloadType) => ({
@@ -124,7 +125,9 @@ export const fetchWeather =
   async () => {
     try {
       const data = await fetchData(debouncedLocation, days);
-      store.dispatch(setWeather(data));
+      console.info('weather data is: ', data)
+      // store.dispatch(setWeather(data));
+      store.dispatch(setWeather(weatherData));
       localStorage.setItem("location", data.location.name);
     } catch (e) {
       console.error(e);

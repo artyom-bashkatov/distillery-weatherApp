@@ -6,7 +6,7 @@ import CitySearch from "../components/CitySearch/CitySearch";
 import {useParams} from 'react-router-dom';
 import {connect} from "react-redux";
 import ForecastPageButtonLink from "../components/ForecastPageButtonLink";
-import CurrentForecast from "../components/CurrentForecast";
+import CurrentForecast from "components/CurrentForecast/CurrentForecast";
 
 type paramsType = {
     city: string

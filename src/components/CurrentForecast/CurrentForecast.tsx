@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import WeatherIcon from './WeatherIcon';
-import '../styles/CurrentForecast.css';
-import WeatherTempScale from "./WeatherTempScale";
-import WeatherCondition from "./WeatherCondition";
+import WeatherIcon from '../WeatherIcon';
+import 'styles/CurrentForecast.css';
+import WeatherTempScale from "../WeatherTempScale";
+import WeatherCondition from "../WeatherCondition";
 
 type CurrentForecastType = {
     wind: number,
@@ -27,10 +27,10 @@ const CurrentForecast:React.FC<CurrentForecastType> = ({ wind, pressure, humidit
                     <WeatherTempScale className='weather__temp-scale'/>
                 </div>
                 <div className='flex weather__properties'>
-                    <div className='properties__value'>{windToMPS}<span>m/s</span></div>
+                    <div data-testid="windToMPS" className='properties__value'>{windToMPS}<span>m/s</span></div>
 
-                    <div className='properties__value'>{pressureToMmOfMercury}<span>mm Hg</span></div>
-                    <div className='properties__value'>{humidity}<span>%</span></div>
+                    <div data-testid="pressureToMmOfMercury" className='properties__value'>{pressureToMmOfMercury}<span>mm Hg</span></div>
+                    <div data-testid="humidity" className='properties__value'>{humidity}<span>%</span></div>
                 </div>
             </div>
         </div>
