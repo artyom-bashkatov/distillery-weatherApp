@@ -45,7 +45,7 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts --max_old_space_size=8096 test",
     "eject": "react-scripts eject",
     "stylelint": "stylelint **/*{.css,.scss}"
   },

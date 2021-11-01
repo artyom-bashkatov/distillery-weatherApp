@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from "@testing-library/user-event";
 import WrapperForTest from 'WrapperForTest';
@@ -7,6 +7,10 @@ import CitySearch from '../CitySearch';
 const element = <WrapperForTest>
   <CitySearch />
 </WrapperForTest>;
+
+afterEach(() => {
+  cleanup();
+})
 
 describe('CitySearch Component', () => {
   test('CitySearch component render', () => {

@@ -6,7 +6,6 @@ import CitiesPage from "./pages/CitiesPage";
 import CityPage from "./pages/CityPage";
 import ForecastPage from "./pages/ForecastPage";
 
-
 const App:React.FC = () => {
     return (
         <Router history={history}>

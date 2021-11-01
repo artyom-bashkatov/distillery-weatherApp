@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import FavoriteCityButton from "../components/FavoriteCityButton";
+import FavoriteCityButton from "components/FavoriteCityButton/FavoriteCityButton";
 import {Link, useHistory} from "react-router-dom";
 import ListButton from "../components/UI/ListButton";
 import CitySearch from "../components/CitySearch/CitySearch";

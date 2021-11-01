@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import FavoriteButton from "./UI/FavoriteButton";
+import FavoriteButton from "components/FavoriteCityButton/FavoriteCityButton";
 import { connect } from "react-redux";
 import {
   addToFavorites,
   removeFromFavorites,
-} from "../store/favoriteCitiesReducer/favoriteCitiesReducer";
+} from "../../store/favoriteCitiesReducer/favoriteCitiesReducer";
 
 type payalodFavorites = {
   city: string;
@@ -12,7 +12,8 @@ type payalodFavorites = {
   temp_f: string;
   lastUpdated: number;
 };
-type FavoriteCityButtonType = {
+
+type FavoriteCityButtonTypeProps = {
   cities: {
     city: string;
   }[];
@@ -22,9 +23,12 @@ type FavoriteCityButtonType = {
   removeFromFavorites: (arg: string) => void;
   temp_c: string;
   temp_f: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  checked?: boolean;
 };
 
-const FavoriteCityButton: React.FC<FavoriteCityButtonType> = ({
+const FavoriteCityButton: React.FC<FavoriteCityButtonTypeProps> = ({
   cities,
   location,
   responseLocation,
@@ -32,7 +36,7 @@ const FavoriteCityButton: React.FC<FavoriteCityButtonType> = ({
   removeFromFavorites,
   temp_c,
   temp_f,
-}: FavoriteCityButtonType) => {
+}: FavoriteCityButtonTypeProps) => {
   const [isFavorite, setFavorite] = useState(
     cities.find((obj) => obj.city === location)
   );

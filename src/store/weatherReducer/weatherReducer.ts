@@ -8,7 +8,8 @@ import {
 } from "./actionTypes";
 import fetchData from "../../helpers/fetchData";
 import { weatherPayloadType, WeatherActionTypes } from "./types";
-import { weatherData } from "mockup/weatherData";
+// next line need when we need to test mockup data
+// import { weatherData } from "mockup/weatherData";
 
 export const setCity = (city: string | null) => ({ type: SET_CITY, payload: city });
 export const setWeather = (response: weatherPayloadType) => ({
@@ -126,8 +127,9 @@ export const fetchWeather =
     try {
       const data = await fetchData(debouncedLocation, days);
       console.info('weather data is: ', data)
-      // store.dispatch(setWeather(data));
-      store.dispatch(setWeather(weatherData));
+      store.dispatch(setWeather(data));
+      // next line need, when we need to check mockup data
+      // store.dispatch(setWeather(weatherData));
       localStorage.setItem("location", data.location.name);
     } catch (e) {
       console.error(e);
