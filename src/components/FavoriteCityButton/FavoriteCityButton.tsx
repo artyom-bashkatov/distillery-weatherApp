@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FavoriteButton from "components/FavoriteCityButton/FavoriteCityButton";
+import FavoriteButton from "components/UI/FavoriteButton";
 import { connect } from "react-redux";
 import {
   addToFavorites,

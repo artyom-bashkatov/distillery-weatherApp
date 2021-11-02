@@ -18,8 +18,7 @@ afterEach(() => {
 describe('FavoriteCityButton render', () => {
   test('FavoriteCityButton test component render', () => {
     render(element);
-    console.info(screen)
-    // store.dispatch(setWeather(weatherData));
-    // expect(screen.getByTestId('favoriteButton')).toBeInTheDocument();
+    store.dispatch(setWeather(weatherData));
+    expect(screen.getByTestId('favoriteButton')).toBeInTheDocument();
   });
 })
