@@ -7,7 +7,7 @@ type Props = {
 };
 
 const FavoriteButton:React.FC<Props> = (props: Props) => {
-    return (
+    return <div data-testid="favoriteButton">
         <Checkbox
             {...props}
             icon={<FavoriteBorder/>}
@@ -23,6 +23,6 @@ const FavoriteButton:React.FC<Props> = (props: Props) => {
                 }
             }}
         />
-    );
+    </div>;
 };
 export default FavoriteButton;

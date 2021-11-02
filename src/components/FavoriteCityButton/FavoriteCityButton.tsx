@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import FavoriteButton from "./UI/FavoriteButton";
+import FavoriteButton from "../UI/FavoriteButton";
 import { connect } from "react-redux";
 import {
   addToFavorites,
   removeFromFavorites,
-} from "../store/favoriteCitiesReducer/favoriteCitiesReducer";
+} from "../../store/favoriteCitiesReducer/favoriteCitiesReducer";
 
 type payalodFavorites = {
   city: string;
