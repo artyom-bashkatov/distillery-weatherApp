@@ -29,9 +29,9 @@ const CitiesList:React.FC<CitiesListType> = ({ cities, tempScale, updateCityInSt
                                 updateCityInStore(obj.city);
                             }}
                             className='cities__btn'
-                            key={obj.city}
+                            key={obj.city + Math.random() + Date.now()}
                         >
-                            <div>{obj.city + Math.random() + Date.now()}</div>
+                            <div>{obj.city}</div>
                             <div className="button_temp">{tempScale === "celsius" ? obj.temp_c : obj.temp_f}°</div>
                         </CityPageButtonLink>
                     ))}
