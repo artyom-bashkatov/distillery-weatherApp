@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import "../styles/CitiesList.css";
+import "styles/CitiesList.css";
 import {useHistory} from "react-router-dom";
-import {setCity} from "../store/weatherReducer/weatherReducer";
-import CityPageButtonLink from "./CityPageButtonLink";
+import {setCity} from "store/weatherReducer/weatherReducer";
+import CityPageButtonLink from "components/CityPageButtonLink";
 
 type CitiesListType = {
     cities: {
@@ -19,7 +19,7 @@ const CitiesList:React.FC<CitiesListType> = ({ cities, tempScale, updateCityInSt
     const router = useHistory();
     if (cities.length > 0) {
         return (
-            <div className='flex cities-list'>
+            <div data-testid="cities-list-items" className='flex cities-list'>
                 <div className='blue-line'></div>
                 <div className='cities'>
                     {cities.map((obj) => (
@@ -31,8 +31,8 @@ const CitiesList:React.FC<CitiesListType> = ({ cities, tempScale, updateCityInSt
                             className='cities__btn'
                             key={obj.city}
                         >
-                            <div>{obj.city}</div>
-                            <div>{tempScale === "celsius" ? obj.temp_c : obj.temp_f}°</div>
+                            <div>{obj.city + Math.random() + Date.now()}</div>
+                            <div className="button_temp">{tempScale === "celsius" ? obj.temp_c : obj.temp_f}°</div>
                         </CityPageButtonLink>
                     ))}
                 </div>
@@ -40,7 +40,7 @@ const CitiesList:React.FC<CitiesListType> = ({ cities, tempScale, updateCityInSt
         );
     } else {
         return (
-            <div className='flex cities-list'>
+            <div data-testid="cities-list-items-empty" className='flex cities-list'>
                 <div className='blue-line'></div>
                 <div className='cities-empty'>
                     <p>Oops!</p>

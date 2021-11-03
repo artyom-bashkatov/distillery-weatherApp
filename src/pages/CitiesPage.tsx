@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import "../styles/CitiesPage.css";
 import CitiesPageBackButton from "../components/CitiesPageBackButton";
-import CitiesList from "../components/CitiesList";
+import CitiesList from "components/CitiesList/CitiesList";
 import TempScaleToggle from "../components/TempScaleToggle";
 import {connect} from "react-redux";
 import {fetchCityTemp} from "../store/favoriteCitiesReducer/favoriteCitiesReducer";
